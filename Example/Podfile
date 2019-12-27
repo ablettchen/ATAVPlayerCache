@@ -1,9 +1,9 @@
 use_frameworks!
 
-target 'AVPlayerCache_Example' do
-  pod 'AVPlayerCache', :path => '../'
+target 'ATAVPlayerCache_Example' do
+  pod 'ATAVPlayerCache', :path => '../'
 
-  target 'AVPlayerCache_Tests' do
+  target 'ATAVPlayerCache_Tests' do
     inherit! :search_paths
 
     

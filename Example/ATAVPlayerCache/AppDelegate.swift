@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  AVPlayerCache
+//  ATAVPlayerCache
 //
 //  Created by ablett on 12/27/2019.
 //  Copyright (c) 2019 ablett. All rights reserved.
@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
     }

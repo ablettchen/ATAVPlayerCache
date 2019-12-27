@@ -1,9 +1,9 @@
-# AVPlayerCache
+# ATAVPlayerCache
 
-[![CI Status](https://img.shields.io/travis/ablett/AVPlayerCache.svg?style=flat)](https://travis-ci.org/ablett/AVPlayerCache)
-[![Version](https://img.shields.io/cocoapods/v/AVPlayerCache.svg?style=flat)](https://cocoapods.org/pods/AVPlayerCache)
-[![License](https://img.shields.io/cocoapods/l/AVPlayerCache.svg?style=flat)](https://cocoapods.org/pods/AVPlayerCache)
-[![Platform](https://img.shields.io/cocoapods/p/AVPlayerCache.svg?style=flat)](https://cocoapods.org/pods/AVPlayerCache)
+[![CI Status](https://img.shields.io/travis/ablett/ATAVPlayerCache.svg?style=flat)](https://travis-ci.org/ablett/ATAVPlayerCache)
+[![Version](https://img.shields.io/cocoapods/v/ATAVPlayerCache.svg?style=flat)](https://cocoapods.org/pods/ATAVPlayerCache)
+[![License](https://img.shields.io/cocoapods/l/ATAVPlayerCache.svg?style=flat)](https://cocoapods.org/pods/ATAVPlayerCache)
+[![Platform](https://img.shields.io/cocoapods/p/ATAVPlayerCache.svg?style=flat)](https://cocoapods.org/pods/ATAVPlayerCache)
 
 ## Example
 
@@ -13,7 +13,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-AVPlayerCache is available through [CocoaPods](https://cocoapods.org). To install
+ATAVPlayerCache is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
@@ -26,4 +26,4 @@ ablett, ablettchen@gmail.com
 
 ## License
 
-AVPlayerCache is available under the MIT license. See the LICENSE file for more info.
+ATAVPlayerCache is available under the MIT license. See the LICENSE file for more info.
