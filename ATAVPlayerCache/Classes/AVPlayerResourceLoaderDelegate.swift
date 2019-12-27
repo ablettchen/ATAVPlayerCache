@@ -1,14 +1,14 @@
 //
 //  AVPlayerResourceLoaderDelegate.swift
 //  AVPlayerCache
-// https://github.com/ZhongshanHuang/VideoPlayer
+
 
 import Foundation
 import AVFoundation
 
 public class AVPlayerResourceLoaderDelegate: NSObject {
     
-    @objc let kAVPlayerCacheScheme = "__ATAVPlayerScheme__"
+    @objc public let kAVPlayerCacheScheme = "__ATAVPlayerScheme__"
     
     // MARK: - Properties
     private lazy var loadingRequests: [URL: AVPlayerResourceLoader] = [:]
