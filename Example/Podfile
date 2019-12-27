@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'AVPlayerCache_Example' do
+  pod 'AVPlayerCache', :path => '../'
+
+  target 'AVPlayerCache_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
