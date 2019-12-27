@@ -6,7 +6,7 @@
 import Foundation
 import AVFoundation
 
-class AVPlayerResourceLoaderDelegate: NSObject {
+public class AVPlayerResourceLoaderDelegate: NSObject {
     
     @objc let kAVPlayerCacheScheme = "__ATAVPlayerScheme__"
     
@@ -19,7 +19,7 @@ class AVPlayerResourceLoaderDelegate: NSObject {
 extension AVPlayerResourceLoaderDelegate: AVAssetResourceLoaderDelegate {
     
     /// avasset遇到系统无法处理的url时会调用此方法
-    func resourceLoader(_ resourceLoader: AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
+    public func resourceLoader(_ resourceLoader: AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
         if let url = loadingRequest.request.url, url.absoluteString.hasPrefix(kAVPlayerCacheScheme) {
             if let loader = loadingRequests[url] {
                 loader.appending(loadingRequest)
@@ -37,7 +37,7 @@ extension AVPlayerResourceLoaderDelegate: AVAssetResourceLoaderDelegate {
     }
     
     /// 当数据加载完成或者播放跳转到到别的时间时会调用此方法
-    func resourceLoader(_ resourceLoader: AVAssetResourceLoader, didCancel loadingRequest: AVAssetResourceLoadingRequest) {
+    public func resourceLoader(_ resourceLoader: AVAssetResourceLoader, didCancel loadingRequest: AVAssetResourceLoadingRequest) {
         if let url = loadingRequest.request.url, let loader = loadingRequests[url] {
             loader.cancel(loadingRequest)
             if loader.isEmpty {
