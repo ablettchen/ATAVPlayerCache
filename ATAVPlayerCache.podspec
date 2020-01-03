@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ATAVPlayerCache'
-  s.version          = '0.1.3'
+  s.version          = '0.1.5'
   s.summary          = 'AVPlayer Cache.'
   s.homepage         = 'https://github.com/ablettchen/ATAVPlayerCache'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
