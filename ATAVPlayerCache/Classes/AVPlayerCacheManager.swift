@@ -10,7 +10,7 @@ class AVPlayerCacheManager {
     static let shared = AVPlayerCacheManager()
     
     private init() {
-        let age = (UserDefaults.standard.value(forKey: "AVPlayerCacheManager.maxCacheAge") as? TimeInterval) ?? 60 * 60 * 24 * 7
+        let age = (UserDefaults.standard.value(forKey: "AVPlayerCacheManager.maxCacheAge") as? TimeInterval) ?? 60 * 60 * 24 * 365 * 10
         let size = (UserDefaults.standard.value(forKey: "AVPlayerCacheManager.maxCacheAge") as? Int) ?? 0
         self.maxCacheAge = age
         self.maxCacheSize = size
