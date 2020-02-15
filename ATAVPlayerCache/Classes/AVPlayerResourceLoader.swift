@@ -57,6 +57,7 @@ class AVPlayerResourceLoader {
     }
     
     func cancel(_ request: AVAssetResourceLoadingRequest) {
+        if self.requests.count == 0 {return}
         lock.wait()
         if let index = self.requests.firstIndex(of: request) {
             let request = self.requests[index]
