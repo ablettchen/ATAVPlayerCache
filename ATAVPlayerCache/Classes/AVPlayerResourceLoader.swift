@@ -62,6 +62,7 @@ class AVPlayerResourceLoader {
         if let index = self.requests.firstIndex(of: request) {
             let request = self.requests[index]
             if request == self.runningRequest {
+                if self.requestTasks.count == 0 {return}
                 self.requestTasks.first?.cancel()
             } else {
                 self.requests.remove(at: index)
