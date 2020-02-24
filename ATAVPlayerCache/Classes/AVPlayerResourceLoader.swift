@@ -57,15 +57,17 @@ class AVPlayerResourceLoader {
     }
     
     func cancel(_ request: AVAssetResourceLoadingRequest) {
-        if self.requests.count == 0 {return}
         lock.wait()
-        if let index = self.requests.firstIndex(of: request) {
-            let request = self.requests[index]
-            if request == self.runningRequest {
-                if self.requestTasks.count == 0 {return}
-                self.requestTasks.first?.cancel()
-            } else {
-                self.requests.remove(at: index)
+        if self.requests.count > 0 {
+            if let index = self.requests.firstIndex(of: request) {
+                let request = self.requests[index]
+                if request == self.runningRequest {
+                    if self.requestTasks.count > 0 {
+                        self.requestTasks.first?.cancel()
+                    }
+                }else {
+                    self.requests.remove(at: index)
+                }
             }
         }
         lock.signal()
