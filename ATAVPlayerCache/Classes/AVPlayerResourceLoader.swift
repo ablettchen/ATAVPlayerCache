@@ -99,11 +99,11 @@ class AVPlayerResourceLoader {
                 if offset < cachedRange.location {
                     let remoteTask = sessionDelegate.remoteDataTask(with: resourceIdentifier, requestRange: NSRange(location: offset, length: cachedRange.location - offset))
                     requestTasks.append(remoteTask)
-                    let localTask = PoAVPlayerResourceRequestLocalTask(fileHandler: fileHandler, requestRange: cachedRange)
+                    let localTask = AVPlayerResourceRequestLocalTask(fileHandler: fileHandler, requestRange: cachedRange)
                     requestTasks.append(localTask)
                     offset = cachedRange.upperBound
                 } else {
-                    let localTask = PoAVPlayerResourceRequestLocalTask(fileHandler: fileHandler, requestRange: cachedRange)
+                    let localTask = AVPlayerResourceRequestLocalTask(fileHandler: fileHandler, requestRange: cachedRange)
                     requestTasks.append(localTask)
                     offset = cachedRange.upperBound
                 }
@@ -164,12 +164,12 @@ class AVPlayerResourceLoader {
 }
 
 
-// MARK: - PoAVPlayerResourceRequestTaskDelegate
+// MARK: - AVPlayerResourceRequestTaskDelegate
 
-extension AVPlayerResourceLoader: PoAVPlayerResourceRequestTaskDelegate {
+extension AVPlayerResourceLoader: AVPlayerResourceRequestTaskDelegate {
     
     func requestTask(_ task: AVPlayerResourceRequestTask, didReceiveResponse response: URLResponse) {
-        if task is PoAVPlayerResourceRequestLocalTask {
+        if task is AVPlayerResourceRequestLocalTask {
             fillContentInformationRequest(with: response, isFromLocal: true)
         } else {
             fillContentInformationRequest(with: response, isFromLocal: false)
@@ -178,14 +178,14 @@ extension AVPlayerResourceLoader: PoAVPlayerResourceRequestTaskDelegate {
     
     func requestTask(_ task: AVPlayerResourceRequestTask, didReceiveData data: Data) {
         runningRequest?.dataRequest?.respond(with: data)
-        if task is PoAVPlayerResourceRequestRemoteTask {
+        if task is AVPlayerResourceRequestRemoteTask {
             fileHandler.saveData(data, at: UInt64(task.currentOffset))
             fileHandler.saveFragment(NSRange(location: task.currentOffset, length: data.count))
         }
     }
     
     func requestTask(_ task: AVPlayerResourceRequestTask, didCompleteWithError error: Error?) {
-        if task is PoAVPlayerResourceRequestRemoteTask {
+        if task is AVPlayerResourceRequestRemoteTask {
             fileHandler.synchronize()
         }
         if error != nil {

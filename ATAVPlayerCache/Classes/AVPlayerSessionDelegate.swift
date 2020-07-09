@@ -10,7 +10,7 @@ class AVPlayerSessionDelegate: NSObject {
     
     // MARK: - Properties
     
-    private var tasks: [URLSessionTask: PoAVPlayerResourceRequestRemoteTask] = [:]
+    private var tasks: [URLSessionTask: AVPlayerResourceRequestRemoteTask] = [:]
     private lazy var session: URLSession = {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 15
@@ -21,13 +21,13 @@ class AVPlayerSessionDelegate: NSObject {
     
     // MARK: - Convenience Initializator
     
-    func remoteDataTask(with url: URL, requestRange: NSRange) -> PoAVPlayerResourceRequestRemoteTask {
+    func remoteDataTask(with url: URL, requestRange: NSRange) -> AVPlayerResourceRequestRemoteTask {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpShouldUsePipelining = true
         urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
         urlRequest.setValue(correctRange(requestRange), forHTTPHeaderField: "Range")
         let dataTask = session.dataTask(with: urlRequest)
-        let remoteTask = PoAVPlayerResourceRequestRemoteTask(task: dataTask, requestRange: requestRange)
+        let remoteTask = AVPlayerResourceRequestRemoteTask(task: dataTask, requestRange: requestRange)
         tasks[dataTask] = remoteTask
         return remoteTask
     }
@@ -46,7 +46,7 @@ class AVPlayerSessionDelegate: NSObject {
         }
     }
     
-    private func task(for task: URLSessionTask) -> PoAVPlayerResourceRequestRemoteTask? {
+    private func task(for task: URLSessionTask) -> AVPlayerResourceRequestRemoteTask? {
         guard let remoteTask = tasks[task] else { return nil }
         guard remoteTask.task.taskIdentifier == task.taskIdentifier else { return nil }
         return remoteTask

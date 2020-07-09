@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         vc.playFinished = { () in
             vc.dismiss(animated: true) {}
         }
-        let string = "https://resource.beilezx.com/Upload/Homework/2019/1230/15777032971577703297000-38.98923888376788.mp4"
+        let string = "https://video.beilezx.com/upload%2Fa%2F2016%2F1214%2F22284084238.mp4"
         vc.confPlayer(with: string)
         self.present(vc, animated: true) {
             vc.player?.play()

@@ -6,7 +6,7 @@
 import UIKit
 import AVFoundation
 
-protocol PoAVPlayerResourceRequestTaskDelegate: class {
+protocol AVPlayerResourceRequestTaskDelegate: class {
     
     func requestTask(_ task: AVPlayerResourceRequestTask, didReceiveResponse response: URLResponse)
     
@@ -19,7 +19,7 @@ protocol PoAVPlayerResourceRequestTaskDelegate: class {
 
 class AVPlayerResourceRequestTask: NSObject {
     
-    weak var delegate: PoAVPlayerResourceRequestTaskDelegate?
+    weak var delegate: AVPlayerResourceRequestTaskDelegate?
     let requestRange: NSRange
     var currentOffset: Int
     
@@ -44,9 +44,9 @@ class AVPlayerResourceRequestTask: NSObject {
 }
 
 
-// MARK: - PoAVPlayerResourceRequestLocalTask
+// MARK: - AVPlayerResourceRequestLocalTask
 private let kBufferSize = 1024 * 64
-class PoAVPlayerResourceRequestLocalTask: AVPlayerResourceRequestTask {
+class AVPlayerResourceRequestLocalTask: AVPlayerResourceRequestTask {
     
     // MARK: - Properties
     unowned let fileHandler: AVPlayerResourceCacheFileHandler
@@ -96,9 +96,9 @@ class PoAVPlayerResourceRequestLocalTask: AVPlayerResourceRequestTask {
 }
 
 
-// MARK: - PoAVPlayerResourceRequestRemoteTask
+// MARK: - AVPlayerResourceRequestRemoteTask
 
-class PoAVPlayerResourceRequestRemoteTask: AVPlayerResourceRequestTask {
+class AVPlayerResourceRequestRemoteTask: AVPlayerResourceRequestTask {
     
     // MARK: - Properties
     let task: URLSessionDataTask
