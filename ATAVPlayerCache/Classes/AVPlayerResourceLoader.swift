@@ -117,7 +117,7 @@ class AVPlayerResourceLoader {
     
     private func startHandleNextTask() {
         if requestTasks.isEmpty {
-            requests.removeFirst()
+            if requests.count > 0 {requests.removeFirst()}
             runningRequest?.finishLoading()
             runningRequest = nil
             startHandleNextRequest()
@@ -189,7 +189,7 @@ extension AVPlayerResourceLoader: AVPlayerResourceRequestTaskDelegate {
         if error != nil {
             requestTasks.removeAll()
             lock.wait()
-            requests.removeFirst()
+            if requests.count > 0 {requests.removeFirst()}
             lock.signal()
             runningRequest?.finishLoading(with: error)
             runningRequest = nil
