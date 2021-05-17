@@ -6,7 +6,7 @@
 import UIKit
 import AVFoundation
 
-protocol AVPlayerResourceRequestTaskDelegate: class {
+protocol AVPlayerResourceRequestTaskDelegate: AnyObject {
     
     func requestTask(_ task: AVPlayerResourceRequestTask, didReceiveResponse response: URLResponse)
     
